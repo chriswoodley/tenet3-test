@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         index: true,
         async lazy() {
-          let { SetTimes } = await import('./containers/set-times');
+          const { SetTimes } = await import('./containers/set-times');
           
           return {
             Component: SetTimes
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/timer",
         async lazy() {
-          let { Timer } = await import('./containers/timer');
+          const { Timer } = await import('./containers/timer');
           
           return {
             Component: Timer

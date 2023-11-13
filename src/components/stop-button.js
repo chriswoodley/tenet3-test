@@ -1,13 +1,12 @@
 import React from 'react'
 
-function StopButton({hasStopped, onClick, disabled, className}) {
+function StopButton({hasStopped, onClick, className}) {
   const text = hasStopped ? 'Reset' : 'Stop';
 
   return (
     <button
       type="button"
       onClick={onClick}
-      disabled={disabled}
       className={className}
     >
       {text}

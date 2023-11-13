@@ -2,7 +2,7 @@ import FizzBuzz from './fizz-buzz';
 import { render, screen } from '../utils/test-utils';
 import deepmerge from 'deepmerge';
 
-const renderComponent = ({ props = {}, state={}, route='/timer' }) => {
+const renderComponent = ({ props = {}, state={}, route='/timer' } = {}) => {
   const defaultProps = {};
   const defaultState = {};
   const mergedProps = deepmerge(defaultProps, props);

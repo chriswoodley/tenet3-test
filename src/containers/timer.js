@@ -92,7 +92,6 @@ export function Timer() {
 
         <StopButton
           hasStopped={isPaused}
-          disabled={time === '0:00:00' && isPaused}
           onClick={stop}
           className={classNames(buttonStyles.stop)}
         />
