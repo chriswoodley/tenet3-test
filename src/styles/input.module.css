@@ -1,0 +1,9 @@
+.control {
+  position: relative;
+}
+
+.error {
+  position: absolute; /* avoid layout shift */
+  margin-top: 4px;
+  color: red;
+}

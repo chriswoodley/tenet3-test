@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback } from 'react';
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import layoutStyles from './styles/layout.module.css';
+import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import buttonStyles from './styles/button.module.css';
 
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const elapsedTime = useSelector(state => state.time.elapsedTime);
+
+  const gotoSetTimes = useCallback(() => {
+    navigate('/');
+  }, [navigate]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div
+      className={classNames(layoutStyles.container)}
+    >
+      <header 
+        className={classNames(layoutStyles.head)}
+      >
+        {
+          location.pathname === '/timer' ? (
+            <button
+              type="button"
+              onClick={gotoSetTimes}
+              disabled={elapsedTime > 0}
+              className={classNames(buttonStyles.default)}
+            >
+              &lt; Set Times
+            </button>
+          ) : null
+        }
       </header>
+
+      <main
+        className={classNames(layoutStyles.content)}
+      >
+        <Outlet />
+      </main>
     </div>
   );
 }

@@ -1,13 +1,53 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import NotFound from './containers/not-found';
+import store from './store'
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        async lazy() {
+          let { SetTimes } = await import('./containers/set-times');
+          
+          return {
+            Component: SetTimes
+          }
+        }
+      },
+      {
+        path: "/timer",
+        async lazy() {
+          let { Timer } = await import('./containers/timer');
+          
+          return {
+            Component: Timer
+          }
+        }
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

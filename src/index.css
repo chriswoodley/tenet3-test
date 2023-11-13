@@ -1,13 +1,53 @@
+@import-normalize;
+
+/* Global Default Styles */
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Arial, sans-serif;
+  color: #707070;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  overflow: auto;
+  position: relative;
+}
+
+label {
+  font-size: 18px;
+}
+
+input[type="number"] {
+  width: 100px;
+  padding: 8px 16px;
+  border: 1px solid #707070;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
